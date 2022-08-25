@@ -5,41 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcheng <mcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 18:30:08 by mcheng            #+#    #+#             */
-/*   Updated: 2022/08/25 08:42:19 by mcheng           ###   ########.fr       */
+/*   Created: 2022/08/25 11:38:26 by mcheng            #+#    #+#             */
+/*   Updated: 2022/08/25 11:45:35 by mcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
 
-char	*ft_strcpy(char *dest, char *src)
+int ft_strlowcase(char *str)
 {
-	int	count;
+        int     lowercase;
+        int     count;
 
-	count = 0;
-	while (src[count] != '\0')
-	{
-		dest[count] = src[count];
-		count++;
-	}
-	dest[count] = '\0';
-	return (dest);
+        count = 0;
+        while (str[count] != '\0')
+        {
+                if (str[count] >= 'A' && str[count] <= 'Z')
+                {
+                        str[count] += 32;
+                }
+                count++;
+        }
+        return (lowercase);
 }
 
-int	main(void)
+int main(void)
 {
-	char dest[] = "Destination hello";
-	char src[] = "Hello World";
-	char *result;
+        char src[] = "HELLO WORLD";
+        char *result;
 
-	printf("Test before copying:\n");
-	printf("source: %s\n", src);
-	printf("destination: %s\n", dest);
-	result = ft_strcpy(dest, src);
-
-	printf("Test after copying:\n");
-	printf("source: %s\n", src);
-	printf("destination: %s\n", dest);
+        printf("Uppercase:\n");
+        printf("%s\n", src);
+        result = ft_strlowcase(src);
+        printf("Lowercase:\n");
+        printf("%s\n", src);
 }
